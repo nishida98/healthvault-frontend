@@ -63,13 +63,22 @@ type MessageSchema = {
     dateLabel: string
     doctorLabel: string
     fileLabel: string
+    folderLabel: string
+    foldersTitle: string
+    foldersDescription: string
+    folderNameLabel: string
+    createFolderButton: string
     addButton: string
     filtersTitle: string
     filtersDescription: string
+    allFolders: string
     allTypes: string
     empty: string
     mocked: string
     saved: string
+    folderCreated: string
+    moved: string
+    moveToFolder: string
     results: string
     types: {
       lab: string
@@ -146,13 +155,22 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       dateLabel: 'Data',
       doctorLabel: 'Medico solicitante',
       fileLabel: 'Nome do arquivo',
+      folderLabel: 'Pasta',
+      foldersTitle: 'Pastas',
+      foldersDescription: 'Crie pastas para organizar exames por contexto, especialidade ou periodo.',
+      folderNameLabel: 'Nome da pasta',
+      createFolderButton: 'Criar pasta',
       addButton: 'Adicionar exame',
       filtersTitle: 'Filtros',
       filtersDescription: 'O filtro de medico usa debounce antes de atualizar a lista.',
+      allFolders: 'Todas as pastas',
       allTypes: 'Todos os tipos',
       empty: 'Nenhum exame encontrado com os filtros atuais.',
       mocked: 'Dados mockados',
       saved: 'Exame adicionado localmente.',
+      folderCreated: 'Pasta criada localmente.',
+      moved: 'Exame movido localmente.',
+      moveToFolder: 'Mover para pasta',
       results: 'exames encontrados',
       types: {
         lab: 'Laboratorial',
@@ -227,13 +245,22 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       dateLabel: 'Date',
       doctorLabel: 'Requesting doctor',
       fileLabel: 'File name',
+      folderLabel: 'Folder',
+      foldersTitle: 'Folders',
+      foldersDescription: 'Create folders to organize exams by context, specialty, or period.',
+      folderNameLabel: 'Folder name',
+      createFolderButton: 'Create folder',
       addButton: 'Add exam',
       filtersTitle: 'Filters',
       filtersDescription: 'The doctor filter uses debounce before refreshing the list.',
+      allFolders: 'All folders',
       allTypes: 'All types',
       empty: 'No exams found with the current filters.',
       mocked: 'Mocked data',
       saved: 'Exam added locally.',
+      folderCreated: 'Folder created locally.',
+      moved: 'Exam moved locally.',
+      moveToFolder: 'Move to folder',
       results: 'exams found',
       types: {
         lab: 'Lab',

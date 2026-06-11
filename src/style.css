@@ -469,6 +469,11 @@ button {
   padding: 24px;
 }
 
+.exam-side-panel {
+  display: grid;
+  gap: 18px;
+}
+
 .filters-panel {
   display: grid;
   gap: 18px;
@@ -501,8 +506,24 @@ button {
 
 .filters-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
+}
+
+.folder-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.folder-list span {
+  padding: 7px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: var(--color-surface-muted);
+  font-size: 0.88rem;
+  font-weight: 850;
 }
 
 .list-header {
@@ -524,7 +545,7 @@ button {
 
 .saved-exam-card {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) auto;
+  grid-template-columns: 44px minmax(0, 1fr) minmax(190px, auto);
   align-items: center;
   gap: 14px;
   min-height: 86px;
@@ -562,11 +583,37 @@ button {
 }
 
 .saved-exam-card small {
+  display: inline-flex;
   padding: 7px 10px;
   border-radius: 999px;
   color: var(--color-primary-dark);
   background: #ffffff;
   font-weight: 850;
+}
+
+.exam-card-actions {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+
+.exam-card-actions label {
+  display: grid;
+  gap: 6px;
+  min-width: 190px;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.exam-card-actions select {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-ink);
+  background: #ffffff;
 }
 
 .empty-state {
@@ -705,5 +752,13 @@ button {
 
   .saved-exam-card {
     grid-template-columns: 1fr;
+  }
+
+  .exam-card-actions {
+    justify-items: stretch;
+  }
+
+  .exam-card-actions label {
+    min-width: 0;
   }
 }

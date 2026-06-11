@@ -49,6 +49,7 @@ O Vite vai informar a URL local, normalmente `http://localhost:5173`.
 - `/` - landing page
 - `/sign-in` - tela de entrada com chamada mockada
 - `/sign-up` - tela de cadastro com chamada mockada
+- `/exams` - tela pos-login para adicionar e filtrar exames
 
 ## Internacionalizacao
 
@@ -71,4 +72,4 @@ O repositorio inclui um workflow em `.github/workflows/ci.yml` que roda em pushe
 - Substituir chamadas mockadas por integracao real de autenticacao.
 - Conectar com a API do HealthVault.
 - Criar upload real para exames.
-- Criar area autenticada para visualizar exames centralizados.
+- Trocar a lista mockada de exames por dados persistidos.

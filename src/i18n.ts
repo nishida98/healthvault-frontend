@@ -5,6 +5,7 @@ type MessageSchema = {
     signIn: string
     signUp: string
     language: string
+    exams: string
   }
   landing: {
     eyebrow: string
@@ -51,6 +52,32 @@ type MessageSchema = {
     successSignIn: string
     successSignUp: string
   }
+  exams: {
+    eyebrow: string
+    title: string
+    description: string
+    addTitle: string
+    addDescription: string
+    titleLabel: string
+    typeLabel: string
+    dateLabel: string
+    doctorLabel: string
+    fileLabel: string
+    addButton: string
+    filtersTitle: string
+    filtersDescription: string
+    allTypes: string
+    empty: string
+    mocked: string
+    saved: string
+    results: string
+    types: {
+      lab: string
+      imaging: string
+      report: string
+      other: string
+    }
+  }
 }
 
 const messages: Record<'pt-BR' | 'en', MessageSchema> = {
@@ -59,18 +86,19 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       signIn: 'Entrar',
       signUp: 'Criar conta',
       language: 'Idioma',
+      exams: 'Meus exames',
     },
     landing: {
-      eyebrow: 'Exames em um só lugar',
-      title: 'Salve e centralize seus exames de saúde com segurança.',
+      eyebrow: 'Exames em um so lugar',
+      title: 'Salve e centralize seus exames de saude com seguranca.',
       description:
-        'HealthVault organiza laudos, imagens e resultados laboratoriais em um único cofre digital para você encontrar tudo quando precisar.',
+        'HealthVault organiza laudos, imagens e resultados laboratoriais em um unico cofre digital para voce encontrar tudo quando precisar.',
       primaryAction: 'Criar conta',
       secondaryAction: 'Entrar',
       panelStatus: 'Chamadas mockadas',
       panelTitle: 'Seu cofre de exames',
       panelDescription: 'Resultados recentes, imagens e documentos ficam agrupados por categoria.',
-      uploaded: 'salvos este mês',
+      uploaded: 'salvos este mes',
       categories: {
         lab: 'Laboratoriais',
         imaging: 'Imagem',
@@ -79,10 +107,10 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       benefits: {
         save: {
           title: 'Salve seus exames',
-          text: 'Guarde PDFs, imagens e resultados em um espaço único preparado para evoluir com upload real.',
+          text: 'Guarde PDFs, imagens e resultados em um espaco unico preparado para evoluir com upload real.',
         },
         centralize: {
-          title: 'Centralize o histórico',
+          title: 'Centralize o historico',
           text: 'Mantenha exames antigos e recentes juntos para facilitar consultas e acompanhamentos.',
         },
         access: {
@@ -93,18 +121,45 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
     },
     auth: {
       signInTitle: 'Entrar no HealthVault',
-      signInSubtitle: 'Acesse sua área para consultar seus exames centralizados.',
+      signInSubtitle: 'Acesse sua area para consultar seus exames centralizados.',
       signUpTitle: 'Criar conta no HealthVault',
-      signUpSubtitle: 'Comece a salvar seus exames em um cofre digital único.',
+      signUpSubtitle: 'Comece a salvar seus exames em um cofre digital unico.',
       name: 'Nome completo',
       email: 'E-mail',
       password: 'Senha',
       submitSignIn: 'Entrar',
       submitSignUp: 'Criar conta',
-      backHome: 'Voltar para início',
-      mockedCall: 'Esta chamada ainda é mockada.',
-      successSignIn: 'Login mockado concluído.',
-      successSignUp: 'Cadastro mockado concluído.',
+      backHome: 'Voltar para inicio',
+      mockedCall: 'Esta chamada ainda e mockada.',
+      successSignIn: 'Login mockado concluido.',
+      successSignUp: 'Cadastro mockado concluido.',
+    },
+    exams: {
+      eyebrow: 'Area do usuario',
+      title: 'Adicione e organize seus exames.',
+      description:
+        'Salve exames em uma lista centralizada e encontre rapidamente por tipo, data ou medico solicitante.',
+      addTitle: 'Novo exame',
+      addDescription: 'Por enquanto o upload e a persistencia estao mockados.',
+      titleLabel: 'Nome do exame',
+      typeLabel: 'Tipo de exame',
+      dateLabel: 'Data',
+      doctorLabel: 'Medico solicitante',
+      fileLabel: 'Nome do arquivo',
+      addButton: 'Adicionar exame',
+      filtersTitle: 'Filtros',
+      filtersDescription: 'O filtro de medico usa debounce antes de atualizar a lista.',
+      allTypes: 'Todos os tipos',
+      empty: 'Nenhum exame encontrado com os filtros atuais.',
+      mocked: 'Dados mockados',
+      saved: 'Exame adicionado localmente.',
+      results: 'exames encontrados',
+      types: {
+        lab: 'Laboratorial',
+        imaging: 'Imagem',
+        report: 'Laudo',
+        other: 'Outro',
+      },
     },
   },
   en: {
@@ -112,6 +167,7 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       signIn: 'Sign in',
       signUp: 'Sign up',
       language: 'Language',
+      exams: 'My exams',
     },
     landing: {
       eyebrow: 'Exams in one place',
@@ -158,6 +214,33 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       mockedCall: 'This call is still mocked.',
       successSignIn: 'Mocked sign in completed.',
       successSignUp: 'Mocked sign up completed.',
+    },
+    exams: {
+      eyebrow: 'User area',
+      title: 'Add and organize your exams.',
+      description:
+        'Save exams in one centralized list and quickly find them by type, date, or requesting doctor.',
+      addTitle: 'New exam',
+      addDescription: 'Upload and persistence are mocked for now.',
+      titleLabel: 'Exam name',
+      typeLabel: 'Exam type',
+      dateLabel: 'Date',
+      doctorLabel: 'Requesting doctor',
+      fileLabel: 'File name',
+      addButton: 'Add exam',
+      filtersTitle: 'Filters',
+      filtersDescription: 'The doctor filter uses debounce before refreshing the list.',
+      allTypes: 'All types',
+      empty: 'No exams found with the current filters.',
+      mocked: 'Mocked data',
+      saved: 'Exam added locally.',
+      results: 'exams found',
+      types: {
+        lab: 'Lab',
+        imaging: 'Imaging',
+        report: 'Report',
+        other: 'Other',
+      },
     },
   },
 }

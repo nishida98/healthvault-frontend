@@ -363,14 +363,20 @@ button {
   padding: 28px;
 }
 
-.auth-card label {
+.auth-card label,
+.exam-form label,
+.filters-grid label {
   display: grid;
   gap: 8px;
   color: var(--color-ink);
   font-weight: 800;
 }
 
-.auth-card input {
+.auth-card input,
+.exam-form input,
+.exam-form select,
+.filters-grid input,
+.filters-grid select {
   width: 100%;
   min-height: 48px;
   padding: 12px 14px;
@@ -405,6 +411,173 @@ button {
   font-weight: 800;
 }
 
+.dashboard-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 58px 0 28px;
+}
+
+.dashboard-hero h1 {
+  max-width: 720px;
+  margin: 22px 0 14px;
+  font-size: 4rem;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.dashboard-hero p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+.mock-badge {
+  flex: 0 0 auto;
+  padding: 10px 13px;
+  border: 1px solid rgba(117, 189, 111, 0.44);
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: var(--color-accent-soft);
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.exams-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.42fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.exam-form,
+.exam-list-panel,
+.filters-panel {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.exam-form,
+.exam-list-panel {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+}
+
+.filters-panel {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.section-heading svg {
+  flex: 0 0 auto;
+  color: var(--color-primary);
+}
+
+.section-heading h2 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--color-muted);
+}
+
+.list-header strong {
+  color: var(--color-ink);
+}
+
+.saved-exams {
+  display: grid;
+  gap: 12px;
+}
+
+.saved-exam-card {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 86px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface-muted);
+}
+
+.exam-card-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  color: var(--color-primary-dark);
+  background: var(--color-accent-soft);
+}
+
+.saved-exam-card strong,
+.saved-exam-card span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.saved-exam-card strong {
+  margin-bottom: 8px;
+  color: var(--color-ink);
+}
+
+.saved-exam-card span,
+.saved-exam-card small {
+  color: var(--color-muted);
+}
+
+.saved-exam-card small {
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: #ffffff;
+  font-weight: 850;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 28px;
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
 @media (max-width: 920px) {
   .app-shell {
     width: min(100% - 28px, 720px);
@@ -431,7 +604,8 @@ button {
   }
 
   .hero-section,
-  .auth-layout {
+  .auth-layout,
+  .exams-layout {
     grid-template-columns: 1fr;
   }
 
@@ -452,6 +626,20 @@ button {
 
   .auth-copy h1 {
     font-size: 3.1rem;
+  }
+
+  .dashboard-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 42px;
+  }
+
+  .dashboard-hero h1 {
+    font-size: 3.1rem;
+  }
+
+  .filters-grid {
+    grid-template-columns: 1fr;
   }
 
   .feature-grid {
@@ -483,13 +671,21 @@ button {
     font-size: 2.35rem;
   }
 
+  .dashboard-hero h1 {
+    font-size: 2.35rem;
+  }
+
   .hero-copy p,
-  .auth-copy p {
+  .auth-copy p,
+  .dashboard-hero p {
     font-size: 1.02rem;
   }
 
   .vault-panel,
-  .auth-card {
+  .auth-card,
+  .exam-form,
+  .exam-list-panel,
+  .filters-panel {
     padding: 18px;
   }
 
@@ -505,5 +701,9 @@ button {
 
   .feature-card {
     padding: 20px;
+  }
+
+  .saved-exam-card {
+    grid-template-columns: 1fr;
   }
 }

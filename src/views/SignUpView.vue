@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { UserPlus } from '@lucide/vue'
 import { useI18n } from 'vue-i18n'
 import { mockSignUp } from '../services/mockAuth'
 
 const { t } = useI18n()
+const router = useRouter()
 
 const name = ref('')
 const email = ref('')
@@ -25,6 +26,7 @@ async function submit() {
 
   message.value = t('auth.successSignUp')
   isSubmitting.value = false
+  await router.push('/exams')
 }
 </script>
 

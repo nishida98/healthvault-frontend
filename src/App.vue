@@ -34,6 +34,9 @@ const currentLocale = computed({
           </select>
         </label>
 
+        <RouterLink class="secondary-action compact" to="/exams">
+          {{ t('nav.exams') }}
+        </RouterLink>
         <RouterLink class="secondary-action compact" to="/sign-in">
           {{ t('nav.signIn') }}
         </RouterLink>

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { LogIn } from '@lucide/vue'
 import { useI18n } from 'vue-i18n'
-import { mockSignIn } from '../services/mockAuth'
+import { signIn } from '../services/auth'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -17,14 +17,19 @@ async function submit() {
   isSubmitting.value = true
   message.value = ''
 
-  await mockSignIn({
-    email: email.value,
-    password: password.value,
-  })
+  try {
+    await signIn({
+      email: email.value,
+      password: password.value,
+    })
 
-  message.value = t('auth.successSignIn')
-  isSubmitting.value = false
-  await router.push('/exams')
+    message.value = t('auth.successSignIn')
+    await router.push('/exams')
+  } catch (error) {
+    message.value = error instanceof Error ? error.message : t('auth.errorGeneric')
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -33,7 +38,7 @@ async function submit() {
     <div class="auth-copy">
       <span class="eyebrow">
         <LogIn :size="18" />
-        {{ t('auth.mockedCall') }}
+        {{ t('auth.apiCall') }}
       </span>
       <h1 id="sign-in-title">{{ t('auth.signInTitle') }}</h1>
       <p>{{ t('auth.signInSubtitle') }}</p>

@@ -45,12 +45,15 @@ type MessageSchema = {
     name: string
     email: string
     password: string
+    nickname: string
     submitSignIn: string
     submitSignUp: string
     backHome: string
     mockedCall: string
+    apiCall: string
     successSignIn: string
     successSignUp: string
+    errorGeneric: string
   }
   exams: {
     eyebrow: string
@@ -63,13 +66,29 @@ type MessageSchema = {
     dateLabel: string
     doctorLabel: string
     fileLabel: string
+    resultLabel: string
+    folderLabel: string
+    foldersTitle: string
+    foldersDescription: string
+    folderNameLabel: string
+    createFolderButton: string
     addButton: string
     filtersTitle: string
     filtersDescription: string
+    allFolders: string
     allTypes: string
     empty: string
     mocked: string
+    apiConnected: string
+    loading: string
     saved: string
+    folderCreated: string
+    moved: string
+    moveToFolder: string
+    selectFolder: string
+    folderRequired: string
+    errorGeneric: string
+    files: string
     results: string
     types: {
       lab: string
@@ -95,7 +114,7 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
         'HealthVault organiza laudos, imagens e resultados laboratoriais em um unico cofre digital para voce encontrar tudo quando precisar.',
       primaryAction: 'Criar conta',
       secondaryAction: 'Entrar',
-      panelStatus: 'Chamadas mockadas',
+      panelStatus: 'API integrada',
       panelTitle: 'Seu cofre de exames',
       panelDescription: 'Resultados recentes, imagens e documentos ficam agrupados por categoria.',
       uploaded: 'salvos este mes',
@@ -125,14 +144,17 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       signUpTitle: 'Criar conta no HealthVault',
       signUpSubtitle: 'Comece a salvar seus exames em um cofre digital unico.',
       name: 'Nome completo',
+      nickname: 'Apelido',
       email: 'E-mail',
       password: 'Senha',
       submitSignIn: 'Entrar',
       submitSignUp: 'Criar conta',
       backHome: 'Voltar para inicio',
-      mockedCall: 'Esta chamada ainda e mockada.',
-      successSignIn: 'Login mockado concluido.',
-      successSignUp: 'Cadastro mockado concluido.',
+      mockedCall: 'Integrado com a API.',
+      apiCall: 'Integrado com a API.',
+      successSignIn: 'Login concluido.',
+      successSignUp: 'Cadastro concluido.',
+      errorGeneric: 'Nao foi possivel concluir a operacao.',
     },
     exams: {
       eyebrow: 'Area do usuario',
@@ -145,14 +167,30 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       typeLabel: 'Tipo de exame',
       dateLabel: 'Data',
       doctorLabel: 'Medico solicitante',
-      fileLabel: 'Nome do arquivo',
+      fileLabel: 'Arquivo do exame',
+      resultLabel: 'Resultado',
+      folderLabel: 'Pasta',
+      foldersTitle: 'Pastas',
+      foldersDescription: 'Crie pastas para organizar exames por contexto, especialidade ou periodo.',
+      folderNameLabel: 'Nome da pasta',
+      createFolderButton: 'Criar pasta',
       addButton: 'Adicionar exame',
       filtersTitle: 'Filtros',
       filtersDescription: 'O filtro de medico usa debounce antes de atualizar a lista.',
+      allFolders: 'Todas as pastas',
       allTypes: 'Todos os tipos',
       empty: 'Nenhum exame encontrado com os filtros atuais.',
-      mocked: 'Dados mockados',
-      saved: 'Exame adicionado localmente.',
+      mocked: 'Dados da API',
+      apiConnected: 'API conectada',
+      loading: 'Carregando',
+      saved: 'Exame salvo na API.',
+      folderCreated: 'Pasta criada na API.',
+      moved: 'Exame movido na API.',
+      moveToFolder: 'Mover para pasta',
+      selectFolder: 'Selecione uma pasta',
+      folderRequired: 'Crie ou selecione uma pasta antes de salvar o exame.',
+      errorGeneric: 'Nao foi possivel carregar os dados da API.',
+      files: 'arquivos',
       results: 'exames encontrados',
       types: {
         lab: 'Laboratorial',
@@ -176,7 +214,7 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
         'HealthVault organizes reports, images, and lab results in one digital vault so you can find everything when you need it.',
       primaryAction: 'Sign up',
       secondaryAction: 'Sign in',
-      panelStatus: 'Mocked calls',
+      panelStatus: 'API integrated',
       panelTitle: 'Your exam vault',
       panelDescription: 'Recent results, images, and documents stay grouped by category.',
       uploaded: 'saved this month',
@@ -206,14 +244,17 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       signUpTitle: 'Create your HealthVault account',
       signUpSubtitle: 'Start saving your exams in one digital vault.',
       name: 'Full name',
+      nickname: 'Nickname',
       email: 'Email',
       password: 'Password',
       submitSignIn: 'Sign in',
       submitSignUp: 'Sign up',
       backHome: 'Back home',
-      mockedCall: 'This call is still mocked.',
-      successSignIn: 'Mocked sign in completed.',
-      successSignUp: 'Mocked sign up completed.',
+      mockedCall: 'Connected to the API.',
+      apiCall: 'Connected to the API.',
+      successSignIn: 'Sign in completed.',
+      successSignUp: 'Sign up completed.',
+      errorGeneric: 'Could not complete the operation.',
     },
     exams: {
       eyebrow: 'User area',
@@ -226,14 +267,30 @@ const messages: Record<'pt-BR' | 'en', MessageSchema> = {
       typeLabel: 'Exam type',
       dateLabel: 'Date',
       doctorLabel: 'Requesting doctor',
-      fileLabel: 'File name',
+      fileLabel: 'Exam file',
+      resultLabel: 'Result',
+      folderLabel: 'Folder',
+      foldersTitle: 'Folders',
+      foldersDescription: 'Create folders to organize exams by context, specialty, or period.',
+      folderNameLabel: 'Folder name',
+      createFolderButton: 'Create folder',
       addButton: 'Add exam',
       filtersTitle: 'Filters',
       filtersDescription: 'The doctor filter uses debounce before refreshing the list.',
+      allFolders: 'All folders',
       allTypes: 'All types',
       empty: 'No exams found with the current filters.',
-      mocked: 'Mocked data',
-      saved: 'Exam added locally.',
+      mocked: 'API data',
+      apiConnected: 'API connected',
+      loading: 'Loading',
+      saved: 'Exam saved in the API.',
+      folderCreated: 'Folder created in the API.',
+      moved: 'Exam moved in the API.',
+      moveToFolder: 'Move to folder',
+      selectFolder: 'Select a folder',
+      folderRequired: 'Create or select a folder before saving the exam.',
+      errorGeneric: 'Could not load API data.',
+      files: 'files',
       results: 'exams found',
       types: {
         lab: 'Lab',

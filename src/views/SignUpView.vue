@@ -3,12 +3,13 @@ import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { UserPlus } from '@lucide/vue'
 import { useI18n } from 'vue-i18n'
-import { mockSignUp } from '../services/mockAuth'
+import { signUp } from '../services/auth'
 
 const { t } = useI18n()
 const router = useRouter()
 
 const name = ref('')
+const nickname = ref('')
 const email = ref('')
 const password = ref('')
 const isSubmitting = ref(false)
@@ -18,15 +19,21 @@ async function submit() {
   isSubmitting.value = true
   message.value = ''
 
-  await mockSignUp({
-    name: name.value,
-    email: email.value,
-    password: password.value,
-  })
+  try {
+    await signUp({
+      name: name.value,
+      nickname: nickname.value,
+      email: email.value,
+      password: password.value,
+    })
 
-  message.value = t('auth.successSignUp')
-  isSubmitting.value = false
-  await router.push('/exams')
+    message.value = t('auth.successSignUp')
+    await router.push('/exams')
+  } catch (error) {
+    message.value = error instanceof Error ? error.message : t('auth.errorGeneric')
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -35,7 +42,7 @@ async function submit() {
     <div class="auth-copy">
       <span class="eyebrow">
         <UserPlus :size="18" />
-        {{ t('auth.mockedCall') }}
+        {{ t('auth.apiCall') }}
       </span>
       <h1 id="sign-up-title">{{ t('auth.signUpTitle') }}</h1>
       <p>{{ t('auth.signUpSubtitle') }}</p>
@@ -45,6 +52,11 @@ async function submit() {
       <label>
         <span>{{ t('auth.name') }}</span>
         <input v-model="name" type="text" autocomplete="name" required />
+      </label>
+
+      <label>
+        <span>{{ t('auth.nickname') }}</span>
+        <input v-model="nickname" type="text" autocomplete="nickname" required />
       </label>
 
       <label>

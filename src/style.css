@@ -34,7 +34,8 @@ body {
 button,
 a,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 
@@ -118,7 +119,12 @@ button {
 .primary-action:focus-visible,
 .secondary-action:focus-visible,
 .text-link:focus-visible,
-.auth-card input:focus-visible {
+.auth-card input:focus-visible,
+.exam-form input:focus-visible,
+.exam-form select:focus-visible,
+.exam-form textarea:focus-visible,
+.filters-grid input:focus-visible,
+.filters-grid select:focus-visible {
   outline: 3px solid rgba(117, 189, 111, 0.45);
   outline-offset: 2px;
 }
@@ -375,6 +381,7 @@ button {
 .auth-card input,
 .exam-form input,
 .exam-form select,
+.exam-form textarea,
 .filters-grid input,
 .filters-grid select {
   width: 100%;
@@ -384,6 +391,10 @@ button {
   border-radius: 8px;
   color: var(--color-ink);
   background: var(--color-surface);
+}
+
+.exam-form textarea {
+  resize: vertical;
 }
 
 .form-submit {
@@ -403,6 +414,11 @@ button {
   color: var(--color-primary-dark);
   background: var(--color-accent-soft);
   font-weight: 800;
+}
+
+.error-message {
+  color: #8a1f17;
+  background: #fde8e5;
 }
 
 .text-link {
@@ -584,11 +600,40 @@ button {
 
 .saved-exam-card small {
   display: inline-flex;
+  max-width: 260px;
   padding: 7px 10px;
   border-radius: 999px;
   color: var(--color-primary-dark);
   background: #ffffff;
   font-weight: 850;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exam-card-actions {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+
+.exam-card-actions label {
+  display: grid;
+  gap: 6px;
+  min-width: 190px;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.exam-card-actions select {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-ink);
+  background: #ffffff;
 }
 
 .exam-card-actions {

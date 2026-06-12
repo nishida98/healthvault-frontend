@@ -636,6 +636,31 @@ button {
   background: #ffffff;
 }
 
+.exam-card-actions {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+
+.exam-card-actions label {
+  display: grid;
+  gap: 6px;
+  min-width: 190px;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.exam-card-actions select {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-ink);
+  background: #ffffff;
+}
+
 .empty-state {
   margin: 0;
   padding: 28px;

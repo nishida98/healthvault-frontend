@@ -89,6 +89,14 @@ async function loadFolders() {
   }
 }
 
+async function loadFolders() {
+  folders.value = await mockListFolders()
+
+  if (!form.folderId && folders.value.length > 0) {
+    form.folderId = folders.value[0].id
+  }
+}
+
 async function submitExam() {
   if (!userId.value || !form.folderId) {
     errorMessage.value = t('exams.folderRequired')
@@ -177,6 +185,14 @@ function handleMoveExam(examId: string, event: Event) {
 
 function handleFileChange(event: Event) {
   selectedFile.value = (event.target as HTMLInputElement).files?.[0] ?? null
+}
+
+function folderName(folderId: string) {
+  return folders.value.find((folder) => folder.id === folderId)?.name ?? '-'
+}
+
+function handleMoveExam(examId: string, event: Event) {
+  void moveExam(examId, (event.target as HTMLSelectElement).value)
 }
 
 function folderName(folderId: string) {
@@ -357,6 +373,10 @@ onMounted(async () => {
           </div>
           <div>
             <strong>{{ exam.examType }}</strong>
+            <span>
+              <FileText :size="16" />
+              {{ folderName(exam.folderId) }}
+            </span>
             <span>
               <FileText :size="16" />
               {{ folderName(exam.folderId) }}
